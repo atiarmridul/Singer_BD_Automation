@@ -20,7 +20,7 @@ class CartPage extends BasePage {
   public async getCartState(): Promise<'empty' | 'items' | 'unknown'> {
     for (const selector of this.cartItemSelectors) {
       const items = await $$(selector);
-      if (items.length > 0) {
+      if ((await items.length) > 0) {
         return 'items';
       }
     }

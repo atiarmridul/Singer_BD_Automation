@@ -38,7 +38,7 @@ const capabilities: WebdriverIO.Capabilities[] =
         }
       ];
 
-export const config: Options.Testrunner = {
+export const config: WebdriverIO.Config = {
   runner: 'local',
   specs: ['./test/specs/**/*.spec.ts'],
   exclude: [],
@@ -55,13 +55,7 @@ export const config: Options.Testrunner = {
     ui: 'bdd',
     timeout: 120000
   },
-  autoCompileOpts: {
-    autoCompile: true,
-    tsNodeOpts: {
-      project: './tsconfig.json',
-      transpileOnly: true
-    }
-  },
+
   baseUrl: 'https://www.singerbd.com',
   suites: {
     smoke: ['./test/specs/home.spec.ts', './test/specs/search.spec.ts'],

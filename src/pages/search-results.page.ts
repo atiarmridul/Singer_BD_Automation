@@ -41,7 +41,7 @@ class SearchResultsPage extends BasePage {
   public async getResultCount(): Promise<number> {
     for (const selector of this.productCardsSelectors) {
       const elements = await $$(selector);
-      if (elements.length > 0) {
+      if ((await elements.length) > 0) {
         return elements.length;
       }
     }
