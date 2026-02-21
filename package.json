@@ -1,0 +1,27 @@
+{
+  "name": "singerbd-wdio-ts-pom-suite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Singer BD automation suite using TypeScript + WebdriverIO + POM",
+  "scripts": {
+    "test": "wdio run wdio.conf.ts",
+    "test:headless": "HEADLESS=true wdio run wdio.conf.ts",
+    "test:chrome": "BROWSER=chrome wdio run wdio.conf.ts",
+    "test:firefox": "BROWSER=firefox wdio run wdio.conf.ts",
+    "test:smoke": "wdio run wdio.conf.ts --suite smoke",
+    "test:regression": "wdio run wdio.conf.ts --suite regression",
+    "test:debug": "wdio run wdio.conf.ts --logLevel debug"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.0.0",
+    "@wdio/cli": "^9.18.0",
+    "@wdio/globals": "^9.18.0",
+    "@wdio/local-runner": "^9.18.0",
+    "@wdio/mocha-framework": "^9.18.0",
+    "@wdio/spec-reporter": "^9.18.0",
+    "@wdio/types": "^9.18.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
