@@ -13,6 +13,8 @@ TypeScript + WebdriverIO (v9) + Page Object Model (POM) test automation framewor
 │   ├── cart.page.ts
 │   ├── home.page.ts
 │   └── search-results.page.ts
+├── src/mcp
+│   └── server.ts
 ├── test/data
 │   ├── search-keywords.json
 │   └── search-keywords.ts
@@ -72,6 +74,30 @@ Run different test configurations using npm scripts:
 - Firefox specific: `npm run test:firefox`
 - Debug mode: `npm run test:debug`
 
+## MCP Server
+
+Run the local MCP server over stdio:
+```bash
+npm run mcp:server
+```
+
+This server currently exposes:
+- Resource: `singerbd://docs/readme` (reads `README.md`)
+- Tool: `list_npm_scripts` (optionally filter scripts by name with `contains`)
+
+Example MCP client config:
+```json
+{
+  "mcpServers": {
+    "singerbd-local": {
+      "command": "npm",
+      "args": ["run", "mcp:server"],
+      "cwd": "/absolute/path/to/Singer_BD_Automaiton"
+    }
+  }
+}
+```
+
 ## Show Report
 
 The framework currently uses the WebdriverIO `spec` reporter. Test results, passes, and failures will be printed directly in the console output.
@@ -96,7 +122,8 @@ N/A
 
 ## Dependencies
 
-There are no direct runtime dependencies (only development dependencies are required for test automation).
+- `@modelcontextprotocol/sdk`
+- `zod`
 
 ## Dev Dependencies
 

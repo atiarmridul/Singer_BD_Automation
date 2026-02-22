@@ -12,7 +12,8 @@
     "test:smoke:fast": "HEADLESS=true LOG_LEVEL=warn MAX_INSTANCES=3 wdio run wdio.conf.ts --suite smoke",
     "test:regression": "wdio run wdio.conf.ts --suite regression",
     "test:regression:fast": "HEADLESS=true LOG_LEVEL=warn MAX_INSTANCES=4 wdio run wdio.conf.ts --suite regression",
-    "test:debug": "wdio run wdio.conf.ts --logLevel debug"
+    "test:debug": "wdio run wdio.conf.ts --logLevel debug",
+    "mcp:server": "ts-node src/mcp/server.ts"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -25,5 +26,9 @@
     "@wdio/types": "^9.18.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^4.3.6"
   }
 }

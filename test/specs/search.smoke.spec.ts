@@ -7,7 +7,6 @@ describe('Singer BD - Search Smoke', () => {
     const keyword = searchKeywords[0];
     await HomePage.open();
     await HomePage.search(keyword);
-
     await SearchResultsPage.waitForResultsPage(keyword);
     await expect(await SearchResultsPage.hasResultOrEmptyState(keyword)).toBe(true);
   });
