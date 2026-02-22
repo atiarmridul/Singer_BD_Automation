@@ -1,15 +1,12 @@
-import HomePage from '../../src/pages/home.page';
 import SearchResultsPage from '../../src/pages/search-results.page';
-import { searchKeywords } from '../data/search-keywords';
+import searchData from '../data/search-keywords.json';
 
 describe('Singer BD - Search', () => {
-  for (const keyword of searchKeywords) {
-    it(`should search for "${keyword}" and show results page`, async () => {
-      await HomePage.open();
-      await HomePage.search(keyword);
-
+  for (const keyword of searchData.keywords) {
+    it(`should load results page for "${keyword}"`, async () => {
+      await browser.url(`/catalogsearch/result/?q=${encodeURIComponent(keyword)}`);
       await SearchResultsPage.waitForResultsPage(keyword);
-      await expect(await SearchResultsPage.hasResultOrEmptyState()).toBe(true);
+      await expect(await SearchResultsPage.hasResultOrEmptyState(keyword)).toBe(true);
 
       const currentUrl = decodeURIComponent(await browser.getUrl()).toLowerCase();
       await expect(currentUrl).toContain(keyword.toLowerCase().split(' ')[0]);

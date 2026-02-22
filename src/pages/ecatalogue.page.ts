@@ -3,14 +3,17 @@ import BasePage from './base.page';
 class ECataloguePage extends BasePage {
   private readonly possiblePaths = ['/ecatalogue', '/e-catalogue'];
   private readonly headingSelectors = ['h1', '.page-title span.base', '.page-title'];
+  private readonly anyHeadingSelector = ['h1', '.page-title span.base', '.page-title'].join(', ');
 
   public async open(): Promise<void> {
     for (const path of this.possiblePaths) {
       await super.open(path);
-      if (await this.isLoaded()) {
+      if (await this.isLoaded(8000)) {
         return;
       }
     }
+
+    throw new Error(`Unable to load e-catalogue page using paths: ${this.possiblePaths.join(', ')}`);
   }
 
   public async getHeading(): Promise<string> {
@@ -18,15 +21,14 @@ class ECataloguePage extends BasePage {
     return this.getText(heading);
   }
 
-  public async isLoaded(): Promise<boolean> {
-    for (const selector of this.headingSelectors) {
-      const heading = await $(selector);
-      if ((await heading.isExisting()) && (await heading.isDisplayed())) {
-        return true;
-      }
+  public async isLoaded(timeout = 2000): Promise<boolean> {
+    const heading = await $(this.anyHeadingSelector);
+    try {
+      await heading.waitForExist({ timeout });
+      return heading.isDisplayed();
+    } catch {
+      return false;
     }
-
-    return false;
   }
 }
 

@@ -12,6 +12,7 @@ This repository contains web automation for `https://www.singerbd.com/` using:
 - `test/specs/`: test scenarios
 - `test/data/`: test data
 - `wdio.conf.ts`: test runner config and suites
+- Search keywords are managed in `test/data/search-keywords.json`
 
 ## Setup
 ```bash
@@ -22,9 +23,13 @@ npm install
 ```bash
 npm test
 npm run test:smoke
+npm run test:smoke:fast
 npm run test:regression
+npm run test:regression:fast
 npm run test:headless
+npm run test:chrome
 npm run test:firefox
+npm run test:debug
 ```
 
 ## Authoring Rules

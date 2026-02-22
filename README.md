@@ -18,6 +18,7 @@ TypeScript + WebdriverIO (v9) + Page Object Model (POM) test framework for `http
 │   ├── cart.page.ts
 │   └── ecatalogue.page.ts
 ├── test/data
+│   ├── search-keywords.json
 │   └── search-keywords.ts
 ├── test/specs
 │   ├── home.spec.ts
@@ -38,7 +39,9 @@ npm install
 ```bash
 npm test
 npm run test:smoke
+npm run test:smoke:fast
 npm run test:regression
+npm run test:regression:fast
 npm run test:headless
 npm run test:firefox
 ```
@@ -46,3 +49,9 @@ npm run test:firefox
 ## Notes
 - Default browser: Chrome
 - Use Firefox: `BROWSER=firefox npm test`
+- Fast smoke defaults: headless + warn logs + higher parallelism
+- Search keyword source of truth: `test/data/search-keywords.json`
+- Optional runtime controls:
+  - `MAX_INSTANCES` to override worker count
+  - `LOG_LEVEL` to override logger verbosity
+  - `SPEC_RETRIES` to retry flaky spec files
