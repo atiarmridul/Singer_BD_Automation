@@ -8,10 +8,24 @@ This repository contains web automation for `https://www.singerbd.com/` using:
 - Page Object Model (POM)
 
 ## Project Layout
-- `src/pages/`: page objects (locators + actions)
-- `test/specs/`: test scenarios
-- `test/data/`: test data
-- `wdio.conf.ts`: test runner config and suites
+
+```text
+.
+├── src/pages
+│   ├── base.page.ts
+│   ├── cart.page.ts
+│   ├── home.page.ts
+│   └── search-results.page.ts
+├── test/data
+│   ├── search-keywords.json
+│   └── search-keywords.ts
+└── test/specs
+    ├── cart.spec.ts
+    ├── home.spec.ts
+    ├── search.smoke.spec.ts
+    └── search.spec.ts
+```
+- Configs and setup: `wdio.conf.ts`, `tsconfig.json`, `package.json`
 - Search keywords are managed in `test/data/search-keywords.json`
 
 ## Setup
