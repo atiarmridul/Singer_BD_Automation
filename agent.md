@@ -16,6 +16,8 @@ This repository contains web automation for `https://www.singerbd.com/` using:
 │   ├── cart.page.ts
 │   ├── home.page.ts
 │   └── search-results.page.ts
+├── src/mcp
+│   └── server.ts
 ├── test/data
 │   ├── search-keywords.json
 │   └── search-keywords.ts
@@ -44,6 +46,7 @@ npm run test:headless
 npm run test:chrome
 npm run test:firefox
 npm run test:debug
+npm run mcp:server
 ```
 
 ## Authoring Rules
